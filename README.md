@@ -30,10 +30,15 @@ This simple app helps you stay consistent with activities like **studying**, **f
 > You can later expand this with HTML, CSS, or React for a full UI.
 
 ---
-and the group members who did everything to make this happen are
+and the group members who did everything to make this happen are:-
+
 1, Melali Temesgen UGR/4750/17[mela778] (https://github.com/mela778)
+
 2, Saron Solomon UGR/9288/17[saronsolomon] (https://github.com/saronsolomon)
+
 3, Haileyesus Tadesse UGR/4727/17[mrgenies] (https://github.com/mrgenies)
+
 4, Amanuel Tekalegn UGR/2394/17[Amanuel-Tekalegn] (https://github.com/Amanuel-Tekalegn)
+
 5, Heaven Heruy UGR/6873/17[Heva-7] (https://github.com/Heva-7)
 
