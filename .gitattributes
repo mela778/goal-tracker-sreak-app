@@ -1,2 +1,20 @@
-# Auto detect text files and perform LF normalization
+# Help Git handle line endings correctly on all systems
 * text=auto
+
+# Tell Git to treat Python files as text
+*.py text
+
+# Treat Markdown files (like README.md) as text
+*.md text
+
+# Treat Jupyter notebooks as text (if used)
+*.ipynb text
+
+# Treat config files and requirements as text
+*.txt text
+*.env text
+
+# Optional: If you add images later, mark them as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
