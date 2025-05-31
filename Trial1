@@ -1,66 +1,59 @@
-import json
-import os
-from datetime import datetime, timedelta
+print('Welcome to the GOAL TRACKER')
 
-DATA_FILE = 'goals.json'
 
-def load_data():
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, 'r') as f:
-            return json.load(f)
-    return {}
+print('\nPlease choose one')
+import datetime
 
-def save_data(data):
-    with open(DATA_FILE, 'w') as f:
-        json.dump(data, f, indent=4)
+goal_name = "Exercise"
+goal_dict = {}  
+current_streak = 0
 
-def add_goal(data, goal_name):
-    if goal_name not in data:
-        data[goal_name] = {
-            "last_done": None,
-            "streak": 0
-        }
-        print(f"Goal '{goal_name}' added.")
+def yesterdays_goal():
+    return (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
+
+def todays_goal():
+    return datetime.date.today().isoformat()
+
+def complete_todays_goal():
+    global current_streak
+    today = todays_goal()
+
+    if today in goal_dict:
+        print("You already marked today's goal as complete.")
+        return goal_dict[today] == True
+
+    yesterday = yesterdays_goal()
+    if yesterday in goal_dict:
+        current_streak += 1
     else:
-        print("Goal already exists.")
+        current_streak = 1
 
-def mark_done(data, goal_name):
-    today = datetime.today().strftime('%Y-%m-%d')
-    yesterday = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+    print(f"✅ Goal '{goal_name}' completed for today!")
+    print(f"🔥 Current streak: {current_streak} day(s)")
 
-    if goal_name not in data:
-        print("Goal does not exist.")
-        return
-
-    last_done = data[goal_name]['last_done']
-
-    if last_done == today:
-        print("You already marked this goal as done today.")
-        return
-
-    if last_done == yesterday:
-        data[goal_name]['streak'] += 1
-    else:
-        data[goal_name]['streak'] = 1
-
-    data[goal_name]['last_done'] = today
-    print(f"Marked '{goal_name}' as done. Current streak: {data[goal_name]['streak']}")
-
-def show_goals(data):
-    if not data:
-        print("No goals tracked yet.")
-        return
-    for goal, info in data.items():
-        print(f"🏁 {goal}: Streak = {info['streak']} (Last done: {info['last_done']})")
+def show_status():
+    print(f"\n--- Goal Tracker: {goal_name} ---")
+    print(f"Days completed: {len(goal_dict)}")
+    print(f"Current streak: {current_streak}")
+    print("Completed Dates:")
+    for date in sorted(goal_dict):
+        print(f" - {date}")
 
 def main():
-    data = load_data()
-
     while True:
-        print("\n--- Goal Tracker ---")
-        print("1. Add new goal")
-        print("2. Mark goal as done today")
-        print("3. Show goals and streaks")
-        print("4. Exit")
+        print("\n1. Mark today's goal as complete")
+        print("2. Show goal status")
+        print("3. Exit")
+        choice = input("Option: ")
 
-        choice =
+        if choice == '1':
+            complete_todays_goal()
+        elif choice == '2':
+            show_status()
+        elif choice == '3':
+            print("Goodbye! Keep up the great work!")
+            break
+        else:
+            print("Invalid option. Please try again.")
+
+main()
