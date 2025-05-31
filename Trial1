@@ -1,59 +1,161 @@
-print('Welcome to the GOAL TRACKER')
-
-
-print('\nPlease choose one')
+name = str(input('Please enter your name: '))
+print(f'WELCOME {name} TO THE GOAL TRACKER PROGRAM !!!')
 import datetime
 
-goal_name = "Exercise"
-goal_dict = {}  
-current_streak = 0
+goal_data = {}
+completed_goals = {}
+current_streaks = {}
 
-def yesterdays_goal():
-    return (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
+TIPS = [
+    "Remember: Small steps every day lead to big changes!",
+    "You're doing great – consistency is key!",
+    "Try scheduling your goal time in your calendar.",
+    "Avoid multitasking – focus on one goal at a time.",
+    "Celebrate small wins to stay motivated!",
+    "Start with just 5 minutes if you're struggling to begin.",
+    "Put your goal somewhere visible to remind yourself daily.",
+    "Track your progress with a checklist – it feels great to tick boxes!",
+    "Tell someone about your goal to stay accountable.",
+    "Rest is part of progress – don’t burn out!",
+    "Break big goals into tiny steps and tackle one at a time.",
+    "Set a specific time and place for your goal activity.",
+    "Don’t aim for perfect – just aim to improve a little each day."
+]
 
-def todays_goal():
-    return datetime.date.today().isoformat()
+CATEGORIES = ['Health', 'Work', 'Learning', 'Finance', 'Personal Development', 'Other']
 
-def complete_todays_goal():
-    global current_streak
-    today = todays_goal()
+def ask_goal_type():
+    print("Choose the period of the goal:")
+    print("1. Daily\n2. Weekly\n3. Monthly\n4. Yearly\n5. Other")
+    types = ['Daily', 'Weekly', 'Monthly', 'Yearly', 'Other']
+    while True:
+        try:
+            choice = int(input("Choose option (1-5): "))
+            if 1 <= choice <= 5:
+                return types[choice - 1]
+        except ValueError:
+            pass
+        print("Invalid choice. Please try again.")
 
-    if today in goal_dict:
-        print("You already marked today's goal as complete.")
-        return goal_dict[today] == True
+def ask_category():
+    print("Select a category for this goal:")
+    for i, cat in enumerate(CATEGORIES, 1):
+        print(f"{i}. {cat}")
+    while True:
+        try:
+            choice = int(input("Choose option (1-6): "))
+            if 1 <= choice <= len(CATEGORIES):
+                return CATEGORIES[choice - 1]
+        except ValueError:
+            pass
+        print("Invalid choice. Please try again.")
 
-    yesterday = yesterdays_goal()
-    if yesterday in goal_dict:
-        current_streak += 1
+def add_goals():
+    goal_type = ask_goal_type()
+    category = ask_category()
+    num_goals = int(input("How many goals do you want to add? "))
+
+    for _ in range(num_goals):
+        name = input("Enter goal title: ")
+        desc = input("Enter a description: ")
+        reminder = input("Set a reminder time (e.g., 18:00): ")
+
+        goal = {
+            "description": desc,
+            "reminder": reminder,
+            "type": goal_type,
+            "category": category,
+            "added_on": datetime.date.today().isoformat()
+        }
+        goal_data[name] = goal
+        completed_goals[name] = []
+        current_streaks[name] = 0
+
+    print(f"{num_goals} goal(s) added!")
+
+def complete_goal():
+    if not goal_data:
+        print("No goals to complete.")
+        return
+
+    print("Which goal did you complete?")
+    for i, goal in enumerate(goal_data.keys(), 1):
+        print(f"{i}. {goal}")
+    try:
+        idx = int(input("Select goal number: ")) - 1
+        goal_name = list(goal_data.keys())[idx]
+    except (IndexError, ValueError):
+        print("Invalid selection.")
+        return
+
+    today = datetime.date.today().isoformat()
+
+    if today in completed_goals[goal_name]:
+        print("You already marked this goal as complete today.")
+        return
+
+    completed_goals[goal_name].append(today)
+
+    # Update streak
+    yesterday = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
+    if yesterday in completed_goals[goal_name]:
+        current_streaks[goal_name] += 1
     else:
-        current_streak = 1
+        current_streaks[goal_name] = 1
 
-    print(f"✅ Goal '{goal_name}' completed for today!")
-    print(f"🔥 Current streak: {current_streak} day(s)")
+    print(f"✅ Great! You completed '{goal_name}' today.")
+    print(f"🔥 Streak: {current_streaks[goal_name]} day(s)")
+
+def show_progress_chart(goal_name):
+    print(f"\n📊 Progress for '{goal_name}':")
+    today = datetime.date.today()
+    last_7_days = [(today - datetime.timedelta(days=i)).isoformat() for i in range(6, -1, -1)]
+    completions = completed_goals.get(goal_name, [])
+    chart = ""
+    for day in last_7_days:
+        symbol = "✔️" if day in completions else "❌"
+        chart += f"{day[-2:]} {symbol}  "
+    print(chart)
 
 def show_status():
-    print(f"\n--- Goal Tracker: {goal_name} ---")
-    print(f"Days completed: {len(goal_dict)}")
-    print(f"Current streak: {current_streak}")
-    print("Completed Dates:")
-    for date in sorted(goal_dict):
-        print(f" - {date}")
+    if not goal_data:
+        print("No goals added yet.")
+        return
+
+    print("\n--- Goal Status ---")
+    for name, goal in goal_data.items():
+        completed = len(completed_goals.get(name, []))
+        streak = current_streaks.get(name, 0)
+        tip = TIPS[completed % len(TIPS)]
+        reminder = goal['reminder']
+        print(f"\n📝 {name} ({goal['type']}, {goal['category']})")
+        print(f"   - Description: {goal['description']}")
+        print(f"   - Reminder: {reminder} ⏰")
+        print(f"   - Days completed: {completed}")
+        print(f"   - Current streak: {streak}")
+        print(f"   - Tip: {tip}")
+        show_progress_chart(name)
 
 def main():
     while True:
-        print("\n1. Mark today's goal as complete")
-        print("2. Show goal status")
-        print("3. Exit")
+        print("\n--- GOAL TRACKER MENU ---")
+        print("1. Add Goals")
+        print("2. Show Goal Status")
+        print("3. Mark Goal as Done")
+        print("4. Exit")
         choice = input("Option: ")
 
         if choice == '1':
-            complete_todays_goal()
+            add_goals()
         elif choice == '2':
             show_status()
         elif choice == '3':
-            print("Goodbye! Keep up the great work!")
+            complete_goal()
+        elif choice == '4':
+            print("Goodbye! Keep pushing forward 💪")
             break
         else:
-            print("Invalid option. Please try again.")
+            print("Invalid choice.")
 
-main()
+if __name__ == "__main__":
+    main()
