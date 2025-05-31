@@ -23,7 +23,7 @@ This simple app helps you stay consistent with activities like **studying**, **f
 
 ## 🛠️ Built With
 
-- JavaScript (core logic)
+- Python (core logic)
 - GitHub (version control)
 - [Visual Studio Code](https://code.visualstudio.com/) (development)
 
