@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goal Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='goal-tracker.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>WELCOME TO THE GOAL TRACKER PROGRAM !!!</h1>
+  </header>
+
+  <div class="container">
+    <h2>Your Goals</h2>
+
+    {% for goal in goals %}
+    <div class="goal-item">
+      <h3>{{ goal.name }}</h3>
+      <div class="goal-meta">Type: {{ goal.type }} • Category: {{ goal.category }}</div>
+      <div class="reminder">⏰ Reminder: {{ goal.reminder }}</div>
+      <div class="streak">🔥 Current Streak: {{ goal.streak }} days</div>
+      <div class="progress-chart">
+        {% for day, mark in goal.progress %}
+          {{ day[-2:] }} {{ mark }}&nbsp;&nbsp;
+        {% endfor %}
+      </div>
+      <div class="tip">💡 Tip: {{ goal.tip }}</div>
+      <a href="{{ url_for('complete_goal', goal_name=goal.name) }}" class="button">Mark as Done</a>
+    </div>
+    {% endfor %}
+
+    <h2>Add New Goal</h2>
+    <form method="POST" action="{{ url_for('add_goal') }}">
+      <label>Title</label>
+      <input type="text" name="title" required />
+
+      <label>Description</label>
+      <input type="text" name="desc" required />
+
+      <label>Reminder Time</label>
+      <input type="time" name="reminder" required />
+
+      <label>Goal Type</label>
+      <select name="type">
+        <option>Daily</option>
+        <option>Weekly</option>
+        <option>Monthly</option>
+        <option>Yearly</option>
+        <option>Other</option>
+      </select>
+
+      <label>Category</label>
+      <select name="category">
+        {% for cat in categories %}
+        <option>{{ cat }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" class="button">Add Goal</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>Made with ❤️ to help you achieve your dreams.</p>
+  </footer>
+</body>
+</html>
