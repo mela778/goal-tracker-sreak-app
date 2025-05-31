@@ -1,0 +1,88 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.goal-item {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+}
+
+.goal-item h3 {
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.goal-meta,
+.reminder,
+.streak,
+.tip {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.progress-chart {
+  font-family: monospace;
+  margin-bottom: 10px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+form input, form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: #357ABD;
+}
+
+footer {
+  text-align: center;
+  margin: 20px;
+  font-size: 14px;
+  color: #888;
+}
