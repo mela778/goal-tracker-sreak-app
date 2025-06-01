@@ -1,5 +1,14 @@
 # Help Git handle line endings correctly on all systems
 * text=auto
+# Treat all JS/JSON files as text and enforce LF endings
+*.js     text eol=lf
+*.jsx    text eol=lf
+*.ts     text eol=lf
+*.tsx    text eol=lf
+*.json   text eol=lf
+*.css    text eol=lf
+*.html   text eol=lf
+*.md     text eol=lf
 
 # Tell Git to treat Python files as text
 *.py text
@@ -18,3 +27,23 @@
 *.png binary
 *.jpg binary
 *.jpeg binary
+*.gif  binary
+*.svg  binary
+*.ico  binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary
+*.eot  binary
+
+# Make sure shell scripts have correct line endings
+*.sh     text eol=lf
+
+# Treat lock files properly
+package-lock.json text eol=lf
+yarn.lock         text eol=lf
+
+# Export-ignore settings (optional, for npm publishing)
+README.md export-ignore
+LICENSE   export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
