@@ -1,5 +1,24 @@
 name = str(input('Please enter your name: '))
 print(f'WELCOME {name} TO THE GOAL TRACKER PROGRAM !!!')
+
+import random
+TIPS = [
+    "Remember: Small steps every day lead to big changes!",
+    "You're doing great – consistency is key!",
+    "Try scheduling your goal time in your calendar.",
+    "Avoid multitasking – focus on one goal at a time.",
+    "Celebrate small wins to stay motivated!",
+    "Start with just 5 minutes if you're struggling to begin.",
+    "Put your goal somewhere visible to remind yourself daily.",
+    "Track your progress with a checklist – it feels great to tick boxes!",
+    "Tell someone about your goal to stay accountable.",
+    "Rest is part of progress – don’t burn out!",
+    "Break big goals into tiny steps and tackle one at a time.",
+    "Set a specific time and place for your goal activity.",
+    "Don’t aim for perfect – just aim to improve a little each day."
+]
+print(f"💡 MOTIVATION: {random.choice(TIPS)}\n")
+
 import datetime
 
 goal_data = {}
