@@ -13,6 +13,13 @@
 
   <div class="container">
     <h2>Your Goals</h2>
+    # HTML templates – treat as text and normalize line endings
+*.html     text eol=lf
+*.htm      text eol=lf
+
+# XML and SVG files (can be templates or embedded)
+*.xml      text eol=lf
+*.svg      binary  # SVGs are often edited as text but stored as binary to avoid diffs
 
     {% for goal in goals %}
     <div class="goal-item">
@@ -41,6 +48,11 @@
       <label>Reminder Time</label>
       <input type="time" name="reminder" required />
 
+      # Templates and markup
+*.html     text eol=lf
+*.htm      text eol=lf
+*.xml      text eol=lf
+*.svg      binary
       <label>Goal Type</label>
       <select name="type">
         <option>Daily</option>
