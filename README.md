@@ -53,5 +53,5 @@ The group members who did everything to make this happen are:-
 
 4, Amanuel Tekalegn UGR/2394/17[Amanuel-Tekalegn] (https://github.com/Amanuel-Tekalegn)
 
-5, Heaven Heruy UGR/6873/17[Heva-7] (https://github.com/Heva-7)
+5, Heven Heruy UGR/6873/17[Heva-7] (https://github.com/Heva-7)
 
