@@ -1,6 +1,9 @@
 # 🎯 Goal Tracker Streak App
+
 A simple and elegant interface to track goals and streaks day by day.
--Stay consistent, build habits and Track your daily goals and build strong habits through streaks!  
+
+-Stay consistent, build habits and Track your daily goals and build strong habits through streaks! 
+
 -This simple app helps you stay consistent with activities like **studying**, **fitness**, **reading**, and more.
 
 ---
