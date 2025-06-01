@@ -31,9 +31,16 @@ This simple app helps you stay consistent with activities like  **studying**, **
 
 - Python (core logic)
 - GitHub (version control)
-- [Visual Studio Code](https://code.visualstudio.com/) (development)
+- [Visual Studio Code]
+- JavaScript
+- React
+- CSS
+- [Any other libraries you used](https://code.visualstudio.com/) (development)
 
 > You can later expand this with HTML, CSS, or React for a full UI.
+> ## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 The group members who did everything to make this happen are:-
