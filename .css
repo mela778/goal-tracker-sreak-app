@@ -12,6 +12,22 @@ header {
   padding: 20px;
   text-align: center;
 }
+# Style files - treat as text and enforce LF line endings
+*.css      text eol=lf
+*.scss     text eol=lf
+*.sass     text eol=lf
+*.less     text eol=lf
+*.pcss     text eol=lf  # PostCSS
+*.styl     text eol=lf
+
+# Fonts (used in styling) - treat as binary
+*.ttf      binary
+*.woff     binary
+*.woff2    binary
+*.eot      binary
+
+# SVGs used in CSS - binary to avoid line ending changes
+*.svg      binary
 
 .container {
   max-width: 800px;
