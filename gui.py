@@ -5,7 +5,9 @@ import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
+# Embedding or exportable files
+*.embed.html text eol=lf
+*.trinket    text eol=lf  # custom extension, if used
 # Constants
 CATEGORIES = ['Health', 'Work', 'Learning', 'Finance', 'Personal Development', 'Other']
 GOAL_TYPES = ['Daily', 'Weekly', 'Monthly', 'Yearly', 'Other']
