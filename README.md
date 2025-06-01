@@ -2,7 +2,13 @@
 
 Track your daily goals and build strong habits through streaks!  
 This simple app helps you stay consistent with activities like  **studying**, **fitness**, **reading**, and more.
+---
 
+- ✅ Daily Goal Tracking – Check off goals you've completed each day.
+- 🔥 Streak Monitor – Track how many days in a row you've stayed on target.
+- 📊 Progress Visualization – See your streak history in a chart.
+- 🎯 Multiple Goal Support – Track several habits simultaneously.
+- 🧠 Simple UI – Clean and intuitive interface for daily use.
 ---
 
 ## 🌟 Main Features
